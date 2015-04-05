@@ -5,5 +5,10 @@
     <string name="view_draft_button">View Drafts</string>me
     <string name="view_queue_button">View Queued</string>
     <string name="action_settings">Settings</string>
+
     <string name="create_welcome">Create a new message!</string>
+
+    <string name="recipient_hint">Enter recipient here.</string>
+    <string name="time_hint">Enter time to be delivered.</string>
+    <string name="content_hint">Enter message content.</string>
 </resources>

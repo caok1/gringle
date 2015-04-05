@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Activity of the create new new message button. Here the user creates a new message -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText android:id="@+id/recipient"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/recipient_hint"/>
+
+        <EditText android:id="@+id/time_delay"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/time_hint"/>
+
+        <EditText android:id="@+id/message_content"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/content_hint"/>
+
+    </LinearLayout>
 
 </LinearLayout>
