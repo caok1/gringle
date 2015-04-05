@@ -1,5 +1,6 @@
 package software.engineering.gringle;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -8,6 +9,7 @@ import java.util.UUID;
 public class Message {
 
     private UUID mId;
+    private Date mCreationDate;
     private String mRecipientTitle;
     private String mTimeTitle;
     private String mContentTitle;
@@ -15,10 +17,15 @@ public class Message {
     public Message() {
         //Generate unique identifier
         mId = UUID.randomUUID();
+        mCreationDate = new Date();
     }
 
     public UUID getId() {
         return mId;
+    }
+
+    public Date getCreationDate() {
+        return mCreationDate;
     }
 
     public String getRecipientTitle() {

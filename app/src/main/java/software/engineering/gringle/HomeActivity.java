@@ -11,6 +11,8 @@ import android.widget.Button;
 
 public class HomeActivity extends ActionBarActivity {
     private Button mNewMessageButton;
+    private Button mViewDraftsButton;
+    private Button mViewQueuedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,12 @@ public class HomeActivity extends ActionBarActivity {
                 startActivity(i);
             }
         });
+
+        mViewDraftsButton = (Button) findViewById(R.id.view_draft_button);
+        mViewDraftsButton.setEnabled(false);
+
+        mViewQueuedButton = (Button) findViewById(R.id.view_queue_button);
+        mViewQueuedButton.setEnabled(false);
     }
 
 

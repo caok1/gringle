@@ -1,44 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!-- Home Page of the Gringle mobile app. Shows the three buttons, create new message,
 view drafts, and view queued.-->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:gravity="center"
               android:orientation="vertical" >
+
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical" >
 
+        <!-- Used to evenly space out the buttons -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+        </View>
 
+        <!-- Create New Message Button -->
         <Button
             android:id="@+id/new_message_button"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/new_message_button" />
 
+        <!-- Used to evenly space out the buttons -->
         <View
-            android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
             android:layout_weight="1" >
         </View>
 
+        <!-- View Drafts Button -->
         <Button
             android:id="@+id/view_draft_button"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/view_draft_button" />
+
+        <!-- Used to evenly space out the buttons -->
         <View
-            android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
             android:layout_weight="1" >
         </View>
 
+        <!-- View Queued Button -->
         <Button
             android:id="@+id/view_queue_button"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/view_queue_button" />
+
+        <!-- Used to evenly space out the buttons -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+        </View>
+
     </LinearLayout>
 </LinearLayout>
