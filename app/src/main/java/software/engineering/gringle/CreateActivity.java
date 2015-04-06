@@ -19,6 +19,9 @@ public class CreateActivity extends Activity {
     private EditText mTimeTitleField;
     private EditText mContentTitleField;
 
+    private Button mSaveButton;
+    private Button mQueueButton;
+
 
 
     @Override
@@ -31,6 +34,12 @@ public class CreateActivity extends Activity {
         mRecipientTitleField = (EditText) findViewById(R.id.recipient);
         mTimeTitleField = (EditText) findViewById(R.id.time_delay);
         mContentTitleField = (EditText) findViewById(R.id.message_content);
+
+        mSaveButton = (Button) findViewById(R.id.save_button);
+        mSaveButton.setEnabled(false);
+
+        mQueueButton = (Button) findViewById(R.id.queue_button);
+        mQueueButton.setEnabled(false);
 
 //Code Used in Criminal Intent. Slightly different because it used fragments
       /*  mRecipientTitleField = (EditText)v.findViewById(R.id.recipient);

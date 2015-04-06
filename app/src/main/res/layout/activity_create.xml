@@ -3,52 +3,50 @@
 <!-- Activity of the create new new message button. Here the user creates a new message -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
-             android:layout_height="match_parent">
+             android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/recipient_title"
-            style="?android:listSeparatorTextViewStyle"
-            />
+            style="?android:listSeparatorTextViewStyle"/>
 
-        <EditText android:id="@+id/recipient"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:hint="@string/recipient_hint"/>
+        <EditText
+            android:id="@+id/recipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recipient_hint"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/time_title"
-            style="?android:listSeparatorTextViewStyle"
-            />
+            style="?android:listSeparatorTextViewStyle" />
 
-        <EditText android:id="@+id/time_delay"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:hint="@string/time_hint"/>
+        <EditText
+            android:id="@+id/time_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/time_hint"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/content_title"
-            style="?android:listSeparatorTextViewStyle"
-            />
+            style="?android:listSeparatorTextViewStyle"/>
 
         <EditText android:id="@+id/message_content"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:hint="@string/content_hint"/>
-    </LinearLayout>
 
+    </LinearLayout>
 
 
     <Button
@@ -64,6 +62,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:text="@string/queue_button" />
-
 
 </FrameLayout>
