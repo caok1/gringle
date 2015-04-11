@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
+ * Possibly missing recipient #. Probably use RecipientTitle as phone number
+ *
  * Created by kevin on 4/4/15.
  */
 public class Message {
@@ -50,5 +52,10 @@ public class Message {
 
     public void setContent(String content) {
         mContent = content;
+    }
+
+    @Override
+    public String toString() {
+        return mRecipientTitle;
     }
 }

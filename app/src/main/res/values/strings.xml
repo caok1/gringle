@@ -13,6 +13,8 @@
     <string name="recipient_title">Recipient</string>
     <string name="time_title">Time</string>
     <string name="content_title">Message</string>
+    <string name="drafts_title">Drafts</string>
+    <string name="queued_title">Queued</string>
 
 
     <string name="recipient_hint">Enter recipient here.</string>

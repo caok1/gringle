@@ -32,7 +32,7 @@ public class HomeActivity extends ActionBarActivity {
         mViewDraftsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomeActivity.this, DraftActivity.class);
+                Intent i = new Intent(HomeActivity.this, DraftListActivity.class);
                 startActivity(i);
             }
         });
