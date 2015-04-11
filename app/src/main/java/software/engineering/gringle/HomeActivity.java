@@ -29,7 +29,14 @@ public class HomeActivity extends ActionBarActivity {
         });
 
         mViewDraftsButton = (Button) findViewById(R.id.view_draft_button);
-        mViewDraftsButton.setEnabled(false);
+        mViewDraftsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, DraftActivity.class);
+                startActivity(i);
+            }
+        });
+        //mViewDraftsButton.setEnabled(false);
 
         mViewQueuedButton = (Button) findViewById(R.id.view_queue_button);
         mViewQueuedButton.setEnabled(false);

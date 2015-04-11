@@ -12,7 +12,7 @@ public class Message {
     private Date mCreationDate;
     private String mRecipientTitle;
     private String mTimeTitle;
-    private String mContentTitle;
+    private String mContent;
 
     public Message() {
         //Generate unique identifier
@@ -44,11 +44,11 @@ public class Message {
         mTimeTitle = timeTitle;
     }
 
-    public String getContentTitle() {
-        return mContentTitle;
+    public String getContent() {
+        return mContent;
     }
 
-    public void setContentTitle(String contentTitle) {
-        mContentTitle = contentTitle;
+    public void setContent(String content) {
+        mContent = content;
     }
 }
