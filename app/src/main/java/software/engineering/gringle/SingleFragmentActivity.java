@@ -4,11 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 
 /**
  * Created by kevin on 4/11/15.
  */
-public abstract class SingleFragmentActivity extends FragmentActivity {
+public abstract class SingleFragmentActivity extends ActionBarActivity {
     protected abstract Fragment createFragment();
 
     @Override
