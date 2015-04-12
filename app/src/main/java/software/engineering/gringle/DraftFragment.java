@@ -10,12 +10,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 
 /**
  * Created by kevin on 4/10/15.
  * Connected to HomeActivity
  */
 public class DraftFragment extends Fragment {
+    public static final String EXTRA_DRAFT_ID =
+            "software.engineering.gringle.crime_id";
+
     private Message mMessage;
     private EditText mRecipientTitleField;
     private EditText mTimeTitleField;
@@ -25,10 +30,22 @@ public class DraftFragment extends Fragment {
     private Button mSaveButton;
     private Button mQueueButton;
 
+    public static DraftFragment newInstance(UUID draftId) {
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_DRAFT_ID, draftId);
+        DraftFragment fragment = new DraftFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMessage = new Message();
+
+        UUID draftId = (UUID)getArguments().getSerializable(EXTRA_DRAFT_ID);
+
+        mMessage = DraftHolder.get(getActivity()).getMessage(draftId);
     }
 
     @Override
@@ -37,6 +54,7 @@ public class DraftFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_draft, parent, false);
 
         mRecipientTitleField = (EditText)v.findViewById(R.id.recipient);
+        mRecipientTitleField.setText(mMessage.getRecipientTitle());
         mRecipientTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(
                     CharSequence c, int start, int before, int count) {
@@ -55,6 +73,9 @@ public class DraftFragment extends Fragment {
         });
 
         mTimeTitleField = (EditText)v.findViewById(R.id.time_delay);
+        mTimeTitleField.setText(mMessage.getCreationDate().toString());
+        //Need to replace creation date with set time later when set time works
+        //mTimeTitleField.setText(mMessage.getTimeTitle());
         mTimeTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(
                     CharSequence c, int start, int before, int count) {
@@ -73,6 +94,7 @@ public class DraftFragment extends Fragment {
         });
 
         mContentField = (EditText)v.findViewById(R.id.message_content);
+        mContentField.setText(mMessage.getContent());
         mContentField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(
                     CharSequence c, int start, int before, int count) {

@@ -1,6 +1,7 @@
 package software.engineering.gringle;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,10 @@ public class DraftListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Message c = ((DraftAdapter)getListAdapter()).getItem(position);
-        Log.d(TAG, c.getRecipientTitle() + " was clicked");
+
+        Intent i = new Intent(getActivity(), DraftActivity.class);
+        i.putExtra(DraftFragment.EXTRA_DRAFT_ID, c.getId());
+        startActivity(i);
     }
 
     public class DraftAdapter extends ArrayAdapter<Message> {
@@ -64,5 +68,11 @@ public class DraftListFragment extends ListFragment {
 
             return convertView;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((DraftAdapter)getListAdapter()).notifyDataSetChanged();
     }
 }
