@@ -2,6 +2,7 @@ package software.engineering.gringle;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ public class DraftFragment extends Fragment {
 
     private Message mMessage;
     private EditText mRecipientTitleField;
-    private EditText mTimeTitleField;
+    private Button mTimeDelayButton;
     private EditText mContentField;
 
     private Button mDeleteButton;
@@ -72,26 +73,11 @@ public class DraftFragment extends Fragment {
 
         });
 
-        mTimeTitleField = (EditText)v.findViewById(R.id.time_delay);
-        mTimeTitleField.setText(mMessage.getCreationDate().toString());
         //Need to replace creation date with set time later when set time works
-        //mTimeTitleField.setText(mMessage.getTimeTitle());
-        mTimeTitleField.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(
-                    CharSequence c, int start, int before, int count) {
-                mMessage.setTimeTitle(c.toString());
-            }
+        mTimeDelayButton = (Button)v.findViewById(R.id.time_delay);
+        mTimeDelayButton.setText(mMessage.getCreationDate().toString());
+        mTimeDelayButton.setEnabled(false);
 
-            public void beforeTextChanged(
-                    CharSequence c, int start, int count, int after) {
-                //Intentionally left blank
-            }
-
-            public void afterTextChanged(Editable c) {
-                //This one too
-            }
-
-        });
 
         mContentField = (EditText)v.findViewById(R.id.message_content);
         mContentField.setText(mMessage.getContent());

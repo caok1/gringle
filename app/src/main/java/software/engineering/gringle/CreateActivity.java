@@ -20,7 +20,7 @@ public class CreateActivity extends ActionBarActivity {
 
     private Message mMessage;
     private EditText mRecipientTitleField;
-    private EditText mTimeTitleField;
+    private Button mTimeDelayButton;
     private EditText mContentField;
 
     private Button mSaveButton;
@@ -43,7 +43,8 @@ public class CreateActivity extends ActionBarActivity {
         mMessage = new Message();
 
         mRecipientTitleField = (EditText) findViewById(R.id.recipient);
-        mTimeTitleField = (EditText) findViewById(R.id.time_delay);
+        mTimeDelayButton = (Button) findViewById(R.id.time_delay);
+        mTimeDelayButton.setEnabled(false);
         mContentField = (EditText) findViewById(R.id.message_content);
 
         mSaveButton = (Button) findViewById(R.id.save_button);

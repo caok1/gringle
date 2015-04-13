@@ -26,25 +26,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/time_title"
+            android:text="@string/content_title"
             style="?android:listSeparatorTextViewStyle" />
 
-        <EditText
-            android:id="@+id/time_delay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/time_hint"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/content_title"
-            style="?android:listSeparatorTextViewStyle"/>
 
         <EditText android:id="@+id/message_content"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:hint="@string/content_hint"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/time_title"
+            style="?android:listSeparatorTextViewStyle"/>
+
+
+        <Button
+            android:id="@+id/time_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/time_hint"/>
 
     </LinearLayout>
 

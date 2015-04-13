@@ -11,7 +11,7 @@
     <string name="delete_button">Delete</string>
 
     <string name="recipient_title">Recipient</string>
-    <string name="time_title">Time</string>
+    <string name="time_title">Send Time</string>
     <string name="content_title">Message</string>
 
     <string name="new_message_title">New Message</string>
