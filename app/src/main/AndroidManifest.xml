@@ -25,6 +25,10 @@
         <activity
             android:name=".DraftListActivity"
             android:label="Gringle" />
+        <activity
+            android:name=".DraftPagerActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

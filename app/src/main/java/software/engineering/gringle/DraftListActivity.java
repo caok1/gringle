@@ -1,6 +1,7 @@
 package software.engineering.gringle;
 
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Created by kevin on 4/11/15.

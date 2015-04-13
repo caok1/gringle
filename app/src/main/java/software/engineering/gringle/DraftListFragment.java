@@ -1,9 +1,8 @@
 package software.engineering.gringle;
 
-import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -33,7 +32,7 @@ public class DraftListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Message c = ((DraftAdapter)getListAdapter()).getItem(position);
 
-        Intent i = new Intent(getActivity(), DraftActivity.class);
+        Intent i = new Intent(getActivity(), DraftPagerActivity.class);
         i.putExtra(DraftFragment.EXTRA_DRAFT_ID, c.getId());
         startActivity(i);
     }
@@ -64,7 +63,7 @@ public class DraftListFragment extends ListFragment {
 
             TextView contentTextView =
                     (TextView)convertView.findViewById(R.id.draft_list_item_contentTextView);
-            contentTextView.setText(c.getContent().toString());
+            contentTextView.setText(c.getContent());
 
             return convertView;
         }
