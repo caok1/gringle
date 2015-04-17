@@ -22,4 +22,6 @@
     <string name="recipient_hint">Enter recipient here.</string>
     <string name="time_hint">Enter time to be delivered.</string>
     <string name="content_hint">Enter message content.</string>
+
+    <string name="date_picker_title">Date of message.</string>
 </resources>

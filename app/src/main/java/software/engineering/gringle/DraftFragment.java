@@ -1,5 +1,7 @@
 package software.engineering.gringle;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -22,6 +25,9 @@ public class DraftFragment extends Fragment {
     public static final String EXTRA_DRAFT_ID =
             "software.engineering.gringle.crime_id";
 
+    private static final String DIALOG_DATE = "date";
+    private static final int REQUEST_DATE = 0;
+
     private Message mMessage;
     private EditText mRecipientTitleField;
     private Button mTimeDelayButton;
@@ -31,6 +37,11 @@ public class DraftFragment extends Fragment {
     private Button mSaveButton;
     private Button mQueueButton;
 
+    private void updateDate() {
+        //change to send time delay when ready
+        mTimeDelayButton.setText(mMessage.getCreationDate().toString());
+    }
+
     public static DraftFragment newInstance(UUID draftId) {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_DRAFT_ID, draftId);
@@ -38,6 +49,18 @@ public class DraftFragment extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) return;
+        if (requestCode == REQUEST_DATE) {
+            Date date = (Date)data
+                    .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            mMessage.setCreationDate(date);
+            //change creation date to send time later
+            updateDate();
+        }
     }
 
     @Override
@@ -75,8 +98,17 @@ public class DraftFragment extends Fragment {
 
         //Need to replace creation date with set time later when set time works
         mTimeDelayButton = (Button)v.findViewById(R.id.time_delay);
-        mTimeDelayButton.setText(mMessage.getCreationDate().toString());
-        mTimeDelayButton.setEnabled(false);
+        updateDate();
+        mTimeDelayButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                FragmentManager fm = getActivity()
+                        .getSupportFragmentManager();
+                DatePickerFragment dialog = DatePickerFragment
+                        .newInstance(mMessage.getCreationDate());
+                dialog.setTargetFragment(DraftFragment.this, REQUEST_DATE);
+                dialog.show(fm, DIALOG_DATE);
+            }
+        });
 
 
         mContentField = (EditText)v.findViewById(R.id.message_content);

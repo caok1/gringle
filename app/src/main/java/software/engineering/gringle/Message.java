@@ -13,7 +13,7 @@ public class Message {
     private UUID mId;
     private Date mCreationDate;
     private String mRecipientTitle;
-    private String mTimeTitle;
+    private String mTime;
     private String mContent;
 
     public Message() {
@@ -30,6 +30,11 @@ public class Message {
         return mCreationDate;
     }
 
+    //remove when no longer needed. Temporarily using creation date instead of send time (mTime)
+    public void setCreationDate(Date creationDate) {
+        mCreationDate = creationDate;
+    }
+
     public String getRecipientTitle() {
         return mRecipientTitle;
     }
@@ -38,12 +43,12 @@ public class Message {
         mRecipientTitle = recipientTitle;
     }
 
-    public String getTimeTitle() {
-        return mTimeTitle;
+    public String getTime() {
+        return mTime;
     }
 
-    public void setTimeTitle(String timeTitle) {
-        mTimeTitle = timeTitle;
+    public void setTime(String time) {
+        mTime = time;
     }
 
     public String getContent() {
