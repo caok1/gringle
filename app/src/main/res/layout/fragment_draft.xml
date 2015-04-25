@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Will be used to edit messages -->
+<!-- Activity of the create new new message button. Here the user creates a new message
+Name: Kevin Cao
+Course: CSC 415
+Semester: Spring 2015
+Instructor: Dr. Pulimood
+Project name: Gringle
+Description: Gringle is a delayed text messaging mobile app primarily intended
+for the use of reminders
+Filename: fragment_draft.xml
+Description: Layout that defines the user interface for editing drafts
+Last modified on: 4/5/15
+-->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent" >
@@ -38,6 +50,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/date_title"
+            style="?android:listSeparatorTextViewStyle"/>
+
+        <Button
+            android:id="@+id/date_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/date_hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/time_title"
             style="?android:listSeparatorTextViewStyle"/>
 
@@ -47,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:hint="@string/time_hint" />
+            android:hint="@string/date_hint" />
 
     </LinearLayout>
 

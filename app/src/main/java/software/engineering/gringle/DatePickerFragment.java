@@ -17,11 +17,35 @@ import java.util.GregorianCalendar;
 /**
  * Created by kevin on 4/16/15.
  */
+
+/**
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: DatePickerFragment.java
+ * Description: A fragment class used to display the DatePicker widget.
+ * Hosted by DraftPagerActivity.
+ *Last modified on: 4/20/15
+ */
+
 public class DatePickerFragment extends DialogFragment {
     public static final String EXTRA_DATE =
             "software.engineering.gringle.date";
 
     private Date mDate;
+
+    public static DatePickerFragment newInstance(Date date) {
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_DATE, date);
+
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     private void sendResult(int resultCode) {
         if (getTargetFragment() == null)
@@ -32,15 +56,6 @@ public class DatePickerFragment extends DialogFragment {
                 .onActivityResult(getTargetRequestCode(), resultCode, i);
     }
 
-
-    public static DatePickerFragment newInstance(Date date) {
-        Bundle args = new Bundle();
-        args.putSerializable(EXTRA_DATE, date);
-
-        DatePickerFragment fragment = new DatePickerFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

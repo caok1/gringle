@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Activity of the create new new message button. Here the user creates a new message
+Name: Kevin Cao
+Course: CSC 415
+Semester: Spring 2015
+Instructor: Dr. Pulimood
+Project name: Gringle
+Description: Gringle is a delayed text messaging mobile app primarily intended
+for the use of reminders
+Filename: list_item_draft.xml
+Description: Layout that defines the user interface on the DraftListFragment
+Last modified on: 4/5/15
+-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

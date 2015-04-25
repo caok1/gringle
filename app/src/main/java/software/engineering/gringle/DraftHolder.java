@@ -6,9 +6,18 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Centralized data stash that stores Message objects that are drafts
- * Created by kevin on 4/11/15.
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: DraftHolder.java
+ * Description: Centralized data stash that stores Message objects that are drafts
+ *Last modified on: 4/11/15
  */
+
 public class DraftHolder {
     private ArrayList<Message> mDrafts;
 

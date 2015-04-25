@@ -14,8 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Created by kevin on 4/1/15.
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: CreateActivity.java
+ * Description: Allows the user to create a new delayed message to be saved
+ * as a draft or queued
+ *Last modified on: 4/5/15
  */
+
 public class CreateActivity extends ActionBarActivity {
 
     private Message mMessage;

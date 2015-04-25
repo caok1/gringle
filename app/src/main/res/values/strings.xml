@@ -11,7 +11,8 @@
     <string name="delete_button">Delete</string>
 
     <string name="recipient_title">Recipient</string>
-    <string name="time_title">Send Time</string>
+    <string name="date_title">Delay Date Time</string>
+    <string name="time_title">Delay Send Time</string>
     <string name="content_title">Message</string>
 
     <string name="new_message_title">New Message</string>
@@ -20,8 +21,10 @@
 
 
     <string name="recipient_hint">Enter recipient here.</string>
+    <string name="date_hint">Enter date to be delivered.</string>
     <string name="time_hint">Enter time to be delivered.</string>
     <string name="content_hint">Enter message content.</string>
 
     <string name="date_picker_title">Date of message.</string>
+    <string name="time_picker_title">Time of message.</string>
 </resources>

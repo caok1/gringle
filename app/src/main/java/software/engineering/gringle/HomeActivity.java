@@ -8,6 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: HomeActivity.java
+ * Description: The home screen of the app that will allow the user to create new messages,
+ * view saved drafts, or view queued messages.
+ *Last modified on: 4/1/15
+ */
 
 public class HomeActivity extends ActionBarActivity {
     private Button mNewMessageButton;

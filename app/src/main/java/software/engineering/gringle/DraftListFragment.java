@@ -14,6 +14,20 @@ import java.util.ArrayList;
 /**
  * Created by kevin on 4/11/15.
  */
+
+/**
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: DraftListFragment.java
+ * Description: Interacts with DraftHolder and DraftListActivity to display a list of drafts
+ *Last modified on: 4/11/15
+ */
+
 public class DraftListFragment extends ListFragment {
     private static final String TAG = "DraftListFragment";
     private ArrayList<Message> mDrafts;

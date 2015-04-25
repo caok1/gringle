@@ -8,16 +8,13 @@ Instructor: Dr. Pulimood
 Project name: Gringle
 Description: Gringle is a delayed text messaging mobile app primarily intended
 for the use of reminders
-Filename: dialog_date.xml
-Description: Layout that defines the DatePicker widget
+Filename: activity_create.xml
+Description: Layout that defines the TimePicker widget
 Last modified on: 4/5/15
- -->
+-->
 
-<DatePicker xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/dialog_date_datePicker"
+<TimePicker xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/dialog_time_timePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner">
-
-</DatePicker>
+            android:layout_height="wrap_content">
+</TimePicker>

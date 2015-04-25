@@ -13,6 +13,21 @@ import java.util.UUID;
 /**
  * Created by kevin on 4/12/15.
  */
+
+/**
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: DraftPagerActivity.java
+ * Description: An activity that hosts DraftFragment to display a draft message.Also provides
+ * a UI that lets users swipe between drafts within the list
+ *Last modified on: 4/12/15
+ */
+
 public class DraftPagerActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private ArrayList<Message> mDrafts;
