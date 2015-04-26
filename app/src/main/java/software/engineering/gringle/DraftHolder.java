@@ -27,13 +27,6 @@ public class DraftHolder {
     private DraftHolder(Context appContext) {
         mAppContext = appContext;
         mDrafts = new ArrayList<Message>();
-
-        for (int i = 0; i < 100; i++) {
-            Message c = new Message();
-            c.setRecipientTitle("Recipient #" + i);
-            c.setContent("Nothing for now");
-            mDrafts.add(c);
-        }
     }
 
     public static DraftHolder get(Context c) {
@@ -41,6 +34,10 @@ public class DraftHolder {
             sDraftHolder = new DraftHolder(c.getApplicationContext());
         }
         return sDraftHolder;
+    }
+
+    public void addDraft(Message c) {
+        mDrafts.add(c);
     }
 
     public ArrayList<Message> getDrafts() {

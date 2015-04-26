@@ -27,4 +27,12 @@
 
     <string name="date_picker_title">Date of message.</string>
     <string name="time_picker_title">Time of message.</string>
+
+    <!-- Possibly remove some of the below strings later -->
+    <string name="new_message">New Message</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle">Send a delayed text message</string>
+    <string name="delete_crime">Delete</string>
+
 </resources>

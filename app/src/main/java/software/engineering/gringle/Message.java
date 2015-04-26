@@ -44,7 +44,7 @@ public class Message {
         return mCreationDate;
     }
 
-    //remove when no longer needed. Temporarily using creation date instead of send time (mTime)
+    //remove when no longer needed? Temporarily using creation date instead of send time (mTime)
     public void setCreationDate(Date creationDate) {
         mCreationDate = creationDate;
     }
