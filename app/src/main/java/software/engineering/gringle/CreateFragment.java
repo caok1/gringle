@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +21,7 @@ import java.util.Date;
 /**
  * Created by kevin on 4/25/15.
  */
+
 public class CreateFragment extends Fragment {
     private static final String DIALOG_DATE = "date";
     private static final String DIALOG_TIME = "time";
@@ -116,13 +119,46 @@ public class CreateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                DraftHolder.get(getActivity()).addDraft(mMessage);
-                getActivity().onBackPressed();
+                try {
+                    DraftHolder.get(getActivity()).addDraft(mMessage);
+                    getActivity().onBackPressed();
+                    Toast.makeText(getActivity(),"Message Saved!",
+                            Toast.LENGTH_LONG).show();
+                    getActivity().onBackPressed();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(),"Save failed, please try again later!",
+                            Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
             }
         });
 
         mQueueButton = (Button)v.findViewById(R.id.queue_button);
-        mQueueButton.setEnabled(false);
+               // mQueueButton.setEnabled(false);
+        //Temporary implementation. Testing if sending text messages works.
+        mQueueButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String phoneNo = mRecipientTitleField.getText().toString();
+                String sms = mContentField.getText().toString();
+
+                try {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNo, null, sms, null, null);
+                    Toast.makeText(getActivity(),"SMS Sent!",
+                            Toast.LENGTH_LONG).show();
+                    getActivity().onBackPressed();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(),"SMS failed, please try again later!",
+                            Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         return v;
     }

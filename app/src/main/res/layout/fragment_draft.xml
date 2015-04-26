@@ -45,6 +45,7 @@ Last modified on: 4/5/15
             android:id="@+id/message_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:capitalize="sentences"
             android:hint="@string/content_hint"/>
 
         <TextView
