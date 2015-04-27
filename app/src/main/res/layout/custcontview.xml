@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Activity of the create new new message button. Here the user creates a new message
+Name: Kevin Cao
+Course: CSC 415
+Semester: Spring 2015
+Instructor: Dr. Pulimood
+Project name: Gringle
+Description: Gringle is a delayed text messaging mobile app primarily intended
+for the use of reminders
+Filename: dialog_date.xml
+Description: Layout of the contact suggestions for phone contacts autocomplete
+Last modified on: 4/26/15
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/ccontName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#A5000000" />
+
+    <TextView
+        android:id="@+id/ccontNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/ccontName"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#A5000000" />
+
+    <TextView
+        android:id="@+id/ccontType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ccontNo"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#A5000000" />
+</LinearLayout>

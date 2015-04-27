@@ -2,7 +2,9 @@ package software.engineering.gringle;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.telephony.SmsManager;
@@ -11,15 +13,34 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by kevin on 4/25/15.
+ */
+
+/**
+ * Name: Kevin Cao
+ * Course: CSC 415
+ * Semester: Spring 2015
+ * Instructor: Dr. Pulimood
+ * Project name: Gringle
+ * Description: Gringle is a delayed text messaging mobile app primarily intended
+ * for the use of reminders
+ * Filename: CreateActivity.java
+ * Description: Allows the user to create a new delayed message to be saved
+ * as a draft or queued
+ *Last modified on: 4/26/15
  */
 
 public class CreateFragment extends Fragment {
@@ -38,15 +59,46 @@ public class CreateFragment extends Fragment {
     private Button mSaveButton;
     private Button mQueueButton;
 
+    //Attempt for autocomplete
+    private ArrayList<Map<String, String>> mPeopleList;
+    private SimpleAdapter mAdapter;
+    private AutoCompleteTextView mTxtPhoneNo;
+    private String mNumber;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMessage = new Message();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create, parent, false);
+        mMessage = new Message();
+
+        //Attempt for autocomplete
+        mPeopleList = new ArrayList<>();
+        PopulatePeopleList();
+        mTxtPhoneNo = (AutoCompleteTextView) v.findViewById(R.id.recipient);
+        mAdapter = new SimpleAdapter(getActivity(), mPeopleList, R.layout.custcontview,
+                new String[] { "Name", "Phone", "Type" }, new int[] {
+                R.id.ccontName, R.id.ccontNo, R.id.ccontType });
+        mTxtPhoneNo.setAdapter(mAdapter);
+
+        mTxtPhoneNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> av, View arg1, int index,
+                                    long arg3) {
+                Map<String, String> map = (Map<String, String>) av.getItemAtPosition(index);
+
+                String name  = map.get("Name");
+                mNumber = map.get("Phone");
+                mTxtPhoneNo.setText(name);
+
+            }
+        });
+        //end of attempt
 
         mRecipientTitleField = (EditText)v.findViewById(R.id.recipient);
         mRecipientTitleField.setText(mMessage.getRecipientTitle());
@@ -135,7 +187,7 @@ public class CreateFragment extends Fragment {
         });
 
         mQueueButton = (Button)v.findViewById(R.id.queue_button);
-               // mQueueButton.setEnabled(false);
+     //   mQueueButton.setEnabled(false);
         //Temporary implementation. Testing if sending text messages works.
         mQueueButton.setOnClickListener(new View.OnClickListener() {
 
@@ -147,7 +199,7 @@ public class CreateFragment extends Fragment {
 
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(phoneNo, null, sms, null, null);
+                    smsManager.sendTextMessage(mNumber, null, sms, null, null);
                     Toast.makeText(getActivity(),"SMS Sent!",
                             Toast.LENGTH_LONG).show();
                     getActivity().onBackPressed();
@@ -190,4 +242,55 @@ public class CreateFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         mTimeDelayButton.setText(sdf.format(date).toString());
     }
+
+    //autocomplete attempt continued
+    public void PopulatePeopleList() {
+        mPeopleList.clear();
+        Cursor people = getActivity().getContentResolver().query(
+                ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+        while (people.moveToNext()) {
+            String contactName = people.getString(people
+                    .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            String contactId = people.getString(people
+                    .getColumnIndex(ContactsContract.Contacts._ID));
+            String hasPhone = people
+                    .getString(people
+                            .getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+            if ((Integer.parseInt(hasPhone) > 0)){
+                // You now have the number so now query it like this
+                Cursor phones = getActivity().getContentResolver().query(
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                        null,
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId,
+                        null, null);
+                while (phones.moveToNext()){
+                    //store numbers and display a dialog letting the user select which.
+                    String phoneNumber = phones.getString(
+                            phones.getColumnIndex(
+                                    ContactsContract.CommonDataKinds.Phone.NUMBER));
+                    String numberType = phones.getString(phones.getColumnIndex(
+                            ContactsContract.CommonDataKinds.Phone.TYPE));
+                    Map<String, String> NamePhoneType = new HashMap<>();
+                    NamePhoneType.put("Name", contactName);
+                    NamePhoneType.put("Phone", phoneNumber);
+                    if(numberType.equals("0"))
+                        NamePhoneType.put("Type", "Work");
+                    else
+                    if(numberType.equals("1"))
+                        NamePhoneType.put("Type", "Home");
+                    else if(numberType.equals("2"))
+                        NamePhoneType.put("Type",  "Mobile");
+                    else
+                        NamePhoneType.put("Type", "Other");
+                    //Then add this map to the list.
+                    mPeopleList.add(NamePhoneType);
+                }
+                phones.close();
+            }
+        }
+        people.close();
+        getActivity().startManagingCursor(people);
+    }
+    //end of attempt
 }

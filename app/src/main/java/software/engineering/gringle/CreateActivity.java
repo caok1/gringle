@@ -11,9 +11,9 @@ import android.support.v4.app.Fragment;
  * Description: Gringle is a delayed text messaging mobile app primarily intended
  * for the use of reminders
  * Filename: CreateActivity.java
- * Description: Allows the user to create a new delayed message to be saved
+ * Description: Hosts the fragment for creating new delayed messages.
  * as a draft or queued
- *Last modified on: 4/5/15
+ *Last modified on: 4/25/15
  */
 
 public class CreateActivity extends SingleFragmentActivity {
