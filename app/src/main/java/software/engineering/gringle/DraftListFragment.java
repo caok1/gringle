@@ -69,7 +69,7 @@ public class DraftListFragment extends ListFragment {
 
             TextView titleTextView =
                     (TextView)convertView.findViewById(R.id.draft_list_item_recipientTextView);
-            titleTextView.setText(c.getRecipientTitle());
+            titleTextView.setText(c.getRecipient());
 
             TextView dateTextView =
                     (TextView)convertView.findViewById(R.id.draft_list_item_createDateTextView);

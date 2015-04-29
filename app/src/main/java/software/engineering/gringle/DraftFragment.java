@@ -63,11 +63,11 @@ public class DraftFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_draft, parent, false);
 
         mRecipientTitleField = (EditText)v.findViewById(R.id.recipient);
-        mRecipientTitleField.setText(mMessage.getRecipientTitle());
+        mRecipientTitleField.setText(mMessage.getRecipient());
         mRecipientTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(
                     CharSequence c, int start, int before, int count) {
-                mMessage.setRecipientTitle(c.toString());
+                mMessage.setRecipient(c.toString());
             }
 
             public void beforeTextChanged(

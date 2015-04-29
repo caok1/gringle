@@ -26,10 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by kevin on 4/25/15.
- */
-
-/**
  * Name: Kevin Cao
  * Course: CSC 415
  * Semester: Spring 2015
@@ -51,7 +47,6 @@ public class CreateFragment extends Fragment {
 
     private Message mMessage;
 
-    private EditText mRecipientTitleField;
     private Button mDateDelayButton;
     private Button mTimeDelayButton;
     private EditText mContentField;
@@ -68,18 +63,36 @@ public class CreateFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mMessage = new Message();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create, parent, false);
-        mMessage = new Message();
 
         //Attempt for autocomplete
         mPeopleList = new ArrayList<>();
         PopulatePeopleList();
+
         mTxtPhoneNo = (AutoCompleteTextView) v.findViewById(R.id.recipient);
+        mTxtPhoneNo.setText(mMessage.getRecipient());
+        mTxtPhoneNo.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(
+                    CharSequence c, int start, int before, int count) {
+                mMessage.setRecipient(c.toString());
+            }
+
+            public void beforeTextChanged(
+                    CharSequence c, int start, int count, int after) {
+                //Intentionally left blank
+            }
+
+            public void afterTextChanged(Editable c) {
+                //This one too
+            }
+        });
+
         mAdapter = new SimpleAdapter(getActivity(), mPeopleList, R.layout.custcontview,
                 new String[] { "Name", "Phone", "Type" }, new int[] {
                 R.id.ccontName, R.id.ccontNo, R.id.ccontType });
@@ -99,25 +112,6 @@ public class CreateFragment extends Fragment {
             }
         });
         //end of attempt
-
-        mRecipientTitleField = (EditText)v.findViewById(R.id.recipient);
-        mRecipientTitleField.setText(mMessage.getRecipientTitle());
-        mRecipientTitleField.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(
-                    CharSequence c, int start, int before, int count) {
-                mMessage.setRecipientTitle(c.toString());
-            }
-
-            public void beforeTextChanged(
-                    CharSequence c, int start, int count, int after) {
-                //Intentionally left blank
-            }
-
-            public void afterTextChanged(Editable c) {
-                //This one too
-            }
-
-        });
 
         mContentField = (EditText)v.findViewById(R.id.message_content);
         mContentField.setText(mMessage.getContent());
@@ -141,6 +135,7 @@ public class CreateFragment extends Fragment {
         mDateDelayButton = (Button) v.findViewById(R.id.date_delay);
         updateDate();
         mDateDelayButton.setOnClickListener(new View.OnClickListener() {
+            //DatePicker Dialog is displayed prompting the user to enter a date
             public void onClick(View v) {
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
@@ -156,6 +151,7 @@ public class CreateFragment extends Fragment {
         mTimeDelayButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
+            //TimePicker Dialog is displayed prompting the user to enter a time
             public void onClick(View v) {
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
@@ -194,18 +190,27 @@ public class CreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String phoneNo = mRecipientTitleField.getText().toString();
+                String phoneNo = mTxtPhoneNo.getText().toString();
                 String sms = mContentField.getText().toString();
 
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(mNumber, null, sms, null, null);
+                    smsManager.sendTextMessage(phoneNo, null, sms, null, null);
                     Toast.makeText(getActivity(),"SMS Sent!",
                             Toast.LENGTH_LONG).show();
                     getActivity().onBackPressed();
                 } catch (Exception e) {
-                    Toast.makeText(getActivity(),"SMS failed, please try again later!",
-                            Toast.LENGTH_LONG).show();
+                    try {
+                        SmsManager smsManager = SmsManager.getDefault();
+                        smsManager.sendTextMessage(mNumber, null, sms, null, null);
+                        Toast.makeText(getActivity(),"SMS Sent!",
+                                Toast.LENGTH_LONG).show();
+                        getActivity().onBackPressed();
+                    } catch (Exception ex) {
+                        Toast.makeText(getActivity(),"SMS failed, please try again later!",
+                                Toast.LENGTH_LONG).show();
+                        ex.printStackTrace();
+                    }
                     e.printStackTrace();
                 }
 
@@ -230,20 +235,21 @@ public class CreateFragment extends Fragment {
             updateTime();
         }
     }
-
+    // Updates the Date of the Message object and displays the date on the date button
     public void updateDate() {
         Date date = mMessage.getCreationDate();
         SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
         mDateDelayButton.setText(sdf.format(date).toString());
     }
 
+    // Updates the Time of the Message object and displays the time on the time button
     public void updateTime() {
         Date date = mMessage.getCreationDate();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         mTimeDelayButton.setText(sdf.format(date).toString());
     }
 
-    //autocomplete attempt continued
+    //Fetches contacts from phones contact list
     public void PopulatePeopleList() {
         mPeopleList.clear();
         Cursor people = getActivity().getContentResolver().query(
@@ -258,7 +264,7 @@ public class CreateFragment extends Fragment {
                             .getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
 
             if ((Integer.parseInt(hasPhone) > 0)){
-                // You now have the number so now query it like this
+                //Numbers are retrieved and now they are queried
                 Cursor phones = getActivity().getContentResolver().query(
                         ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                         null,
@@ -292,5 +298,4 @@ public class CreateFragment extends Fragment {
         people.close();
         getActivity().startManagingCursor(people);
     }
-    //end of attempt
 }

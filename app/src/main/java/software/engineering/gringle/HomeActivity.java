@@ -32,6 +32,8 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        // New Message Button that brings the user to create a new message
         mNewMessageButton = (Button) findViewById(R.id.new_message_button);
         mNewMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
+        // View Drafts button that brings the user to a list of saved drafts
         mViewDraftsButton = (Button) findViewById(R.id.view_draft_button);
         mViewDraftsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +52,8 @@ public class HomeActivity extends ActionBarActivity {
                 startActivity(i);
             }
         });
-        //mViewDraftsButton.setEnabled(false);
 
+        // Queue button that brings the user to a list of queued messages
         mViewQueuedButton = (Button) findViewById(R.id.view_queue_button);
         mViewQueuedButton.setEnabled(false);
     }

@@ -24,22 +24,31 @@ import java.util.UUID;
 
 public class Message {
 
+    //Unique identifier of the message
     private UUID mId;
+    //Date of creation of the message
     private Date mCreationDate;
-    private String mRecipientTitle;
+    //Recipient of the message
+    private String mRecipient;
+    //Send time of the message
     private String mTime;
+    //Content of the message to be sent
     private String mContent;
 
+    /*Constructs the message object giving it an unique identifier
+     *and assigns it the current date and time
+     */
     public Message() {
-        //Generate unique identifier
         mId = UUID.randomUUID();
         mCreationDate = new Date();
     }
 
+    //Gets the unique identifier of the message object
     public UUID getId() {
         return mId;
     }
 
+    //Gets the creation date of the message object
     public Date getCreationDate() {
         return mCreationDate;
     }
@@ -49,32 +58,39 @@ public class Message {
         mCreationDate = creationDate;
     }
 
-    public String getRecipientTitle() {
-        return mRecipientTitle;
+    //Gets the recipient of the message
+    public String getRecipient() {
+        return mRecipient;
     }
 
-    public void setRecipientTitle(String recipientTitle) {
-        mRecipientTitle = recipientTitle;
+    //Sets the recipient of the message
+    public void setRecipient(String recipient) {
+        mRecipient = recipient;
     }
 
+    //Gets the send time of the message
     public String getTime() {
         return mTime;
     }
 
+    //Sets the send time of the message
     public void setTime(String time) {
         mTime = time;
     }
 
+    //Gets the content of the message
     public String getContent() {
         return mContent;
     }
 
+    //Sets the content of the message
     public void setContent(String content) {
         mContent = content;
     }
 
+    //Returns the recipient as a string
     @Override
     public String toString() {
-        return mRecipientTitle;
+        return mRecipient;
     }
 }

@@ -23,6 +23,7 @@ Last modified on: 4/5/15
         android:layout_gravity="center_vertical|center_horizontal"
         android:orientation="vertical" >
 
+        <!-- Text and blank space for user to enter the recipient's information -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +36,7 @@ Last modified on: 4/5/15
             android:layout_height="wrap_content"
             android:hint="@string/recipient_hint"/>
 
+        <!-- Text and blank field for user to enter message to recipient -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +50,7 @@ Last modified on: 4/5/15
             android:capitalize="sentences"
             android:hint="@string/content_hint"/>
 
+        <!--Text and Button for user to change the date -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +65,7 @@ Last modified on: 4/5/15
             android:layout_marginRight="16dp"
             android:hint="@string/date_hint" />
 
+        <!-- Text and Button for the user to change the time -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,6 +82,7 @@ Last modified on: 4/5/15
 
     </LinearLayout>
 
+    <!-- Button for the user to delete the draft message -->
     <Button
         android:id="@+id/delete_button"
         android:layout_width="100dp"
@@ -85,7 +90,7 @@ Last modified on: 4/5/15
         android:layout_gravity="bottom|left"
         android:text="@string/delete_button"/>
 
-
+    <!-- Button for the user to save changes to the message -->
     <Button
         android:id="@+id/save_button"
         android:layout_width="100dp"
@@ -93,6 +98,7 @@ Last modified on: 4/5/15
         android:layout_gravity="bottom|center"
         android:text="@string/save_button" />
 
+    <!-- Button for the user to queue the message for delivery -->
     <Button
         android:id="@+id/queue_button"
         android:layout_width="100dp"

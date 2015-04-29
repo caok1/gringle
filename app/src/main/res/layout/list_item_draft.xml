@@ -17,6 +17,7 @@ Last modified on: 4/5/15
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <!-- Lists the name of the recipients of the message -->
     <TextView
         android:id="@+id/draft_list_item_recipientTextView"
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@ Last modified on: 4/5/15
         android:paddingRight="4dp"
         android:text="Recipient Title"/>
 
+    <!-- Lists the content of the message to each recipient -->
     <TextView
         android:id="@+id/draft_list_item_contentTextView"
         android:layout_width="match_parent"
@@ -38,6 +40,7 @@ Last modified on: 4/5/15
         android:paddingTop="4dp"
         android:text="Message Content"/>
 
+    <!-- Lists the delivery time of the message -->
     <TextView
         android:id="@+id/draft_list_item_createDateTextView"
         android:layout_width="match_parent"

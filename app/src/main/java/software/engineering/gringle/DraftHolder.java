@@ -20,9 +20,9 @@ import java.util.UUID;
 
 public class DraftHolder {
     private ArrayList<Message> mDrafts;
-
     private static DraftHolder sDraftHolder;
     private Context mAppContext;
+
 
     private DraftHolder(Context appContext) {
         mAppContext = appContext;
@@ -36,14 +36,17 @@ public class DraftHolder {
         return sDraftHolder;
     }
 
+    //Adds drafts to the array list
     public void addDraft(Message c) {
         mDrafts.add(c);
     }
 
+    //Gets the drafts within the array list
     public ArrayList<Message> getDrafts() {
         return mDrafts;
     }
 
+    //Gets the message requested
     public Message getMessage(UUID id) {
         for (Message c : mDrafts) {
             if (c.getId().equals(id))

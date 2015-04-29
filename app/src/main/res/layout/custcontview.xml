@@ -18,6 +18,7 @@ Last modified on: 4/26/15
               android:layout_height="match_parent"
               android:orientation="vertical" >
 
+    <!-- Lists the name of the person on the contact list -->
     <TextView
         android:id="@+id/ccontName"
         android:layout_width="wrap_content"
@@ -26,6 +27,7 @@ Last modified on: 4/26/15
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#A5000000" />
 
+    <!-- Lists the number of the contact -->
     <TextView
         android:id="@+id/ccontNo"
         android:layout_width="wrap_content"
@@ -36,6 +38,7 @@ Last modified on: 4/26/15
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#A5000000" />
 
+    <!-- Lists the type of the contact either home, mobile, or other -->
     <TextView
         android:id="@+id/ccontType"
         android:layout_width="wrap_content"
